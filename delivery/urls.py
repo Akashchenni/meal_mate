@@ -12,6 +12,9 @@ urlpatterns = [
     path('signin/open_show_restaurant/',views.open_show_restaurant,name='open_show_restaurant'),
     path('add_restaurent/',views.add_restaurent,name='add_restaurent'),      
     path('add_restaurent/open_update_restaurant/<int:id>',views.open_update_restaurant,name='open_update_restaurant'),
-    path('delete_restaurant/<int:id>',views.delete_restaurant,name='delete_restaurant')
+    path('delete_restaurant/<int:id>',views.delete_restaurant,name='delete_restaurant'),
+    path('open_update_menu/<int:id>/',views.open_update_menu,name="open_update_menu"),
+    path('update_menu/<int:id>/',views.update_menu,name='update_menu'),
+    path('view_menu/<int:id>/',views.view_menu,name="view_menu")
 ]
 # 12 the line == open_show_restaurant

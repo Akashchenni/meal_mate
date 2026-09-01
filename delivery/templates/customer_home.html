@@ -24,155 +24,124 @@
 
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+<body>
 
-<body class="customer-page">
+        <div class="restaurant-table-wrapper">
 
-    <div class="customer-container">
+            <table class="restaurant-table">
 
-        <!-- TOP NAVIGATION -->
+                <thead>
 
-        <header class="customer-header">
+                    <tr>
 
-            <div class="customer-brand">
-                🍴
-                <span>Meal Mate</span>
-            </div>
+                        <th>Picture</th>
 
-            <a href="/" class="logout-btn">
-                Logout
-            </a>
+                        <th>Name</th>
 
-        </header>
+                        <th>Cuisine</th>
 
+                        <th>Rating</th>
 
-        <!-- HERO SECTION -->
+                        <th>Operations</th>
 
-        <section class="customer-hero">
+                    </tr>
 
-            <div class="hero-content">
-
-                <span class="hero-small-text">
-                    GOOD FOOD • GOOD MOOD
-                </span>
-
-                <h1>
-                    What are you
-                    <span>craving today?</span>
-                </h1>
-
-                <p>
-                    Discover amazing restaurants and delicious
-                    meals around you.
-                </p>
-
-            </div>
-
-            <div class="hero-food">
-                🍕
-            </div>
-
-        </section>
+                </thead>
 
 
-        <!-- CATEGORIES -->
+                <tbody>
 
-        <section class="customer-section">
+                    {% for restaurant in restaurants %}
 
-            <h2>Explore Categories</h2>
+                    <tr>
 
-            <div class="category-container">
+                        <!-- Picture -->
 
-                <div class="category-card">
-                    🍕
-                    <span>Pizza</span>
-                </div>
+                        <td>
 
-                <div class="category-card">
-                    🍔
-                    <span>Burgers</span>
-                </div>
+                            {% if restaurant.picture %}
 
-                <div class="category-card">
-                    🍜
-                    <span>Noodles</span>
-                </div>
+                            <img
+                                src="{{ restaurant.picture }}"
+                                alt="Picture of {{ restaurant.name }}"
+                                class="restaurant-image">
 
-                <div class="category-card">
-                    🍛
-                    <span>Indian</span>
-                </div>
+                            {% else %}
 
-            </div>
+                            <div class="no-image">
+                                🍽️
+                            </div>
 
-        </section>
+                            {% endif %}
+
+                        </td>
 
 
-        <!-- QUICK ACTIONS -->
+                        <!-- Name -->
 
-        <section class="customer-section">
+                        <td>
 
-            <h2>What would you like to do?</h2>
+                            <div class="restaurant-name">
 
-            <div class="customer-actions">
+                                {{ restaurant.name }}
 
-                <a href="#" class="customer-action-card">
+                            </div>
 
-                    <div class="action-icon">
-                        🍽️
-                    </div>
-
-                    <div>
-                        <h3>Browse Restaurants</h3>
-
-                        <p>
-                            Find your favorite restaurants
-                        </p>
-                    </div>
-
-                    <span class="arrow">
-                        →
-                    </span>
-
-                </a>
+                        </td>
 
 
-                <a href="#" class="customer-action-card">
+                        <!-- Cuisine -->
 
-                    <div class="action-icon">
-                        🛒
-                    </div>
+                        <td>
 
-                    <div>
-                        <h3>My Orders</h3>
+                            <span class="cuisine-badge">
 
-                        <p>
-                            Check your previous orders
-                        </p>
-                    </div>
+                                {{ restaurant.cuisine }}
 
-                    <span class="arrow">
-                        →
-                    </span>
+                            </span>
 
-                </a>
-
-            </div>
-
-        </section>
+                        </td>
 
 
-        <!-- FOOTER -->
+                        <!-- Rating -->
 
-        <footer class="customer-footer">
+                        <td>
 
-            <p>
-                Made with ❤️ by Meal Mate
-            </p>
+                            <div class="rating">
 
-        </footer>
+                                ⭐ {{ restaurant.rating }}
 
-    </div>
+                            </div>
 
+                        </td>
+
+
+                        <!-- Operations -->
+
+                        <td>
+
+                            <div class="restaurant-actions">
+
+
+                                <a href="{% url 'view_menu' restaurant.id  %}" class="action-btn menu-btn">
+                                    🍔 View-Menu
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+    
 </body>
+
 
 </html>

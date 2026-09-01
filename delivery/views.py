@@ -1,7 +1,7 @@
 from django.shortcuts import render , get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Customer
-from .models import Restaurent
+from .models import Restaurent,Item
 
 # Create your views here.
 def index(request):
@@ -48,7 +48,10 @@ def signin(request):
         if username == 'admin':
                 return render(request,'admin_home.html')
         else:
-               return render(request,'customer_home.html')
+            restaurants = Restaurent.objects.all()
+
+            return render(request, 'customer_home.html', {
+                    'restaurants': restaurants})
             
     except Customer.DoesNotExist:
             return render(request,'fail.html')      
@@ -106,3 +109,33 @@ def delete_restaurant(request,id):
      if request.method == 'POST':
           restaurant.delete()
           return redirect('open_show_restaurant')
+
+# update menu
+def open_update_menu(request,id):
+     restaurant = Restaurent.objects.get(id=id)
+     itemlist = Item.objects.all()
+     return render(request,'update_menu.html',{'restaurant':restaurant,'itemlist':itemlist})
+
+def update_menu(request,id):
+     restaurant = get_object_or_404(Restaurent,id=id)
+
+     if request.method == 'POST':
+          name = request.POST.get('name')
+          description = request.POST.get('description')
+          price = request.POST.get('price')
+          is_veg = request.POST.get('is_veg')=='on'
+          picture = request.POST.get('picture')
+
+          Item.objects.create(restaurant=restaurant,
+                              name=name,
+                              description=description,
+                              price=price,
+                              is_veg=is_veg,
+                              picture=picture)
+          return render(request,'admin_home.html')
+
+
+def view_menu(request,id):
+     restaurant = Restaurent.objects.get(id=id)
+     itemlist = Item.objects.all()
+     return render(request,'customer_menu.html',{'restaurant':restaurant,'itemlist':itemlist})
