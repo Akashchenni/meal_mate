@@ -1,11 +1,178 @@
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1>Customer Home Page</h1>
 </body>
+</html> -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meal Mate - Customer</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body class="customer-page">
+
+    <div class="customer-container">
+
+        <!-- TOP NAVIGATION -->
+
+        <header class="customer-header">
+
+            <div class="customer-brand">
+                🍴
+                <span>Meal Mate</span>
+            </div>
+
+            <a href="/" class="logout-btn">
+                Logout
+            </a>
+
+        </header>
+
+
+        <!-- HERO SECTION -->
+
+        <section class="customer-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-small-text">
+                    GOOD FOOD • GOOD MOOD
+                </span>
+
+                <h1>
+                    What are you
+                    <span>craving today?</span>
+                </h1>
+
+                <p>
+                    Discover amazing restaurants and delicious
+                    meals around you.
+                </p>
+
+            </div>
+
+            <div class="hero-food">
+                🍕
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORIES -->
+
+        <section class="customer-section">
+
+            <h2>Explore Categories</h2>
+
+            <div class="category-container">
+
+                <div class="category-card">
+                    🍕
+                    <span>Pizza</span>
+                </div>
+
+                <div class="category-card">
+                    🍔
+                    <span>Burgers</span>
+                </div>
+
+                <div class="category-card">
+                    🍜
+                    <span>Noodles</span>
+                </div>
+
+                <div class="category-card">
+                    🍛
+                    <span>Indian</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="customer-section">
+
+            <h2>What would you like to do?</h2>
+
+            <div class="customer-actions">
+
+                <a href="#" class="customer-action-card">
+
+                    <div class="action-icon">
+                        🍽️
+                    </div>
+
+                    <div>
+                        <h3>Browse Restaurants</h3>
+
+                        <p>
+                            Find your favorite restaurants
+                        </p>
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" class="customer-action-card">
+
+                    <div class="action-icon">
+                        🛒
+                    </div>
+
+                    <div>
+                        <h3>My Orders</h3>
+
+                        <p>
+                            Check your previous orders
+                        </p>
+                    </div>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="customer-footer">
+
+            <p>
+                Made with ❤️ by Meal Mate
+            </p>
+
+        </footer>
+
+    </div>
+
+</body>
+
 </html>

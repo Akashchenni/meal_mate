@@ -1,9 +1,11 @@
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin page</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1>TEST NEW ADMIN PAGE 123</h1>
@@ -12,4 +14,119 @@
     <br>
     <a href="">SHOW RESTAURANT</a>
 </body>
+</html> -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Meal Mate</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body class="admin-page">
+
+    <div class="admin-container">
+
+        <!-- Header -->
+
+        <div class="admin-header">
+
+            <div class="admin-logo">
+                🍴
+            </div>
+
+            <div>
+                <h1>Welcome, Admin!</h1>
+
+                <p>
+                    Manage your Meal Mate restaurants
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- Dashboard -->
+
+        <div class="admin-dashboard">
+
+            <h2>Restaurant Management</h2>
+
+            <p class="dashboard-description">
+                Add and manage restaurants from your dashboard.
+            </p>
+
+
+            <div class="admin-actions">
+
+                <!-- Add Restaurant -->
+
+                <a
+                    href="/signin/add_restaurent_page/"
+                    class="admin-card">
+
+                    <div class="admin-card-icon">
+                        ➕
+                    </div>
+
+                    <h3>Add Restaurant</h3>
+
+                    <p>
+                        Add a new restaurant to Meal Mate.
+                    </p>
+
+                    <span>
+                        Add Restaurant →
+                    </span>
+
+                </a>
+
+
+                <!-- Show Restaurants -->
+
+                <a
+                    href="{% url 'open_show_restaurant' %}"
+                    class="admin-card">
+
+                    <div class="admin-card-icon">
+                        🍽️
+                    </div>
+
+                    <h3>Show Restaurants</h3>
+
+                    <p>
+                        View and manage all restaurants.
+                    </p>
+
+                    <span>
+                        View Restaurants →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+
+        <div class="admin-footer">
+
+            <a href="/" class="back-link">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
 </html>

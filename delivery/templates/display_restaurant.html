@@ -103,8 +103,6 @@
 
                         <th>Rating</th>
 
-                        <th>Operations</th>
-
                     </tr>
 
                 </thead>
@@ -177,31 +175,7 @@
                         </td>
 
 
-                        <!-- Operations -->
-
-                        <td>
-
-                            <div class="restaurant-actions">
-
-                                <a href="{% url 'open_update_restaurant' restaurant.id%}" class="action-btn update-btn">
-                                    ✏️ Update
-                                </a>
-
-                                <form method="post" action="{% url 'delete_restaurant' restaurant.id %}" >
-                                    {% csrf_token %}
-                                    <button type="submit"> Delete Restaurant</button>
-                                </form>
-
-
-                                <a href="#" class="action-btn menu-btn">
-                                    🍔 Menu
-                                </a>
-
-                            </div>
-
-                        </td>
-
-                    </tr>
+                        
 
                     {% endfor %}
 

@@ -1,11 +1,84 @@
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <h1>Lgin Failed!!</h1>
 </body>
+</html> -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login Failed - Meal Mate</title>
+
+    <link rel="stylesheet"
+          href="{% static 'style.css' %}">
+
+</head>
+
+<body class="auth-page">
+
+    <div class="error-card">
+
+        <!-- Error Icon -->
+
+        <div class="error-icon">
+            ⚠️
+        </div>
+
+
+        <!-- Message -->
+
+        <h1>
+            Login Failed!
+        </h1>
+
+        <p class="error-message">
+
+            Username or password is incorrect.
+
+            <br>
+
+            Please check your details and try again.
+
+        </p>
+
+
+        <!-- Try Again -->
+
+        <a href="{% url 'open_signin' %}"
+           class="auth-btn error-btn">
+
+            TRY AGAIN
+
+        </a>
+
+
+        <!-- Home -->
+
+        <a href="/"
+           class="back-link">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+</body>
+
 </html>

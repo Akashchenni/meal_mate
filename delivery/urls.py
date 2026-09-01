@@ -9,5 +9,9 @@ urlpatterns = [
     path('signup/',views.signup, name='signup'),
     path('signin/',views.signin, name='signin'),
     path('signin/add_restaurent_page/',views.add_restaurent_page, name='add_restaurent_page'),
-    path('add_restaurent/',views.add_restaurent,name='add_restaurent')
+    path('signin/open_show_restaurant/',views.open_show_restaurant,name='open_show_restaurant'),
+    path('add_restaurent/',views.add_restaurent,name='add_restaurent'),      
+    path('add_restaurent/open_update_restaurant/<int:id>',views.open_update_restaurant,name='open_update_restaurant'),
+    path('delete_restaurant/<int:id>',views.delete_restaurant,name='delete_restaurant')
 ]
+# 12 the line == open_show_restaurant

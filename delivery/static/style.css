@@ -1,0 +1,3598 @@
+/* =====================================================
+   MEAL MATE - PREMIUM FOOD APP UI
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: #222;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 99, 71, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(255, 193, 7, 0.18), transparent 30%),
+        linear-gradient(135deg, #fff7f3, #fff, #fff5ed);
+
+    background-size: 200% 200%;
+    animation: backgroundMove 12s ease infinite;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   BACKGROUND ANIMATION
+   ===================================================== */
+
+@keyframes backgroundMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =====================================================
+   FLOATING BACKGROUND EFFECT
+   ===================================================== */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    animation: floating 8s ease-in-out infinite;
+}
+
+body::before {
+    background: rgba(255, 77, 45, 0.20);
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    background: rgba(255, 180, 50, 0.20);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: 3s;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(40px, -30px);
+    }
+}
+
+
+/* =====================================================
+   PAGE ENTRANCE ANIMATION
+   ===================================================== */
+
+body {
+    animation: pageEnter 0.8s ease;
+}
+
+@keyframes pageEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+
+.navbar {
+    width: 92%;
+    max-width: 1250px;
+
+    margin: 20px auto;
+
+    padding: 16px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.08);
+
+    position: sticky;
+    top: 15px;
+
+    z-index: 100;
+
+    transition: 0.3s;
+}
+
+.navbar:hover {
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+
+    color: #ff4d2d;
+
+    letter-spacing: -1px;
+
+    transition: 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+
+/* =====================================================
+   NAV LINKS
+   ===================================================== */
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-links a {
+    text-decoration: none;
+
+    color: #333;
+
+    font-weight: 500;
+
+    padding: 10px 18px;
+
+    border-radius: 10px;
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff4d2d;
+
+    background: #fff0eb;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 70px auto;
+
+    animation: contentAppear 0.8s ease;
+}
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   HEADINGS
+   ===================================================== */
+
+h1 {
+    font-size: 42px;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    background: linear-gradient(
+        90deg,
+        #ff4d2d,
+        #ff7a18
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   PREMIUM FORM CARD
+   ===================================================== */
+
+.form-container {
+
+    width: 450px;
+
+    max-width: 92%;
+
+    margin: 80px auto;
+
+    padding: 45px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.12);
+
+    animation: formAppear 0.8s ease;
+
+    transition: 0.4s;
+}
+
+.form-container:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.16);
+}
+
+@keyframes formAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =====================================================
+   FORM TITLE
+   ===================================================== */
+
+.form-container h1 {
+
+    font-size: 32px;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   LABEL
+   ===================================================== */
+
+.form-container label {
+
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #444;
+}
+
+
+/* =====================================================
+   INPUT
+   ===================================================== */
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    transition: 0.3s;
+}
+
+.form-container input:hover {
+
+    border-color: #ff9b85;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+
+    border-color: #ff4d2d;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 77, 45, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   PREMIUM BUTTON
+   ===================================================== */
+
+.form-container button,
+.btn {
+
+    width: 100%;
+
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d2d,
+            #ff7a18
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(255, 77, 45, 0.25);
+
+    transition: all 0.3s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* BUTTON SHINE */
+
+.form-container button::before,
+.btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transition: 0.5s;
+}
+
+.form-container button:hover::before,
+.btn:hover::before {
+
+    left: 100%;
+}
+
+
+.form-container button:hover,
+.btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(255, 77, 45, 0.35);
+}
+
+
+.form-container button:active,
+.btn:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =====================================================
+   FORM LINK
+   ===================================================== */
+
+.form-container p {
+
+    text-align: center;
+
+    margin-top: 22px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+.form-container a {
+
+    color: #ff4d2d;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.form-container a:hover {
+
+    color: #d9361e;
+
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard {
+
+    width: 90%;
+
+    max-width: 1000px;
+
+    margin: 80px auto;
+
+    animation: contentAppear 0.8s ease;
+}
+
+.dashboard-card {
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 25px;
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.1);
+
+    transition: 0.4s;
+}
+
+.dashboard-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.15);
+}
+
+
+/* =====================================================
+   DASHBOARD LINKS
+   ===================================================== */
+
+.dashboard-card a {
+
+    display: inline-block;
+
+    margin: 10px;
+
+    padding: 15px 25px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d2d,
+            #ff7a18
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px rgba(255,77,45,0.25);
+
+    transition: 0.3s;
+}
+
+.dashboard-card a:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.03);
+
+    box-shadow:
+        0 15px 30px rgba(255,77,45,0.35);
+}
+
+
+/* =====================================================
+   RESTAURANT TABLE
+   ===================================================== */
+
+.restaurant-table {
+
+    width: 100%;
+
+    background: rgba(255,255,255,0.82);
+
+    backdrop-filter: blur(15px);
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.10);
+
+    animation: tableAppear 0.8s ease;
+}
+
+@keyframes tableAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* TABLE HEADER */
+
+.restaurant-table th {
+
+    padding: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #222,
+            #333
+        );
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* TABLE BODY */
+
+.restaurant-table td {
+
+    padding: 18px;
+
+    text-align: center;
+
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+
+    font-size: 14px;
+}
+
+
+/* TABLE ROW */
+
+.restaurant-table tbody tr {
+
+    transition: 0.3s;
+}
+
+.restaurant-table tbody tr:hover {
+
+    background: rgba(255,77,45,0.05);
+
+    transform: scale(1.005);
+}
+
+
+/* =====================================================
+   RESTAURANT IMAGE
+   ===================================================== */
+
+.restaurant-table img {
+
+    width: 100px;
+
+    height: 75px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.12);
+
+    transition: 0.4s;
+}
+
+.restaurant-table img:hover {
+
+    transform:
+        scale(1.1)
+        rotate(2deg);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.18);
+}
+
+
+/* =====================================================
+   OPERATION BUTTONS
+   ===================================================== */
+
+.update-btn,
+.delete-btn,
+.menu-btn {
+
+    display: inline-block;
+
+    padding: 8px 13px;
+
+    margin: 3px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.update-btn {
+
+    background: #3498db;
+}
+
+.update-btn:hover {
+
+    background: #217dbb;
+
+    transform: translateY(-2px);
+}
+
+
+.delete-btn {
+
+    background: #e74c3c;
+}
+
+.delete-btn:hover {
+
+    background: #c0392b;
+
+    transform: translateY(-2px);
+}
+
+
+.menu-btn {
+
+    background: #27ae60;
+}
+
+.menu-btn:hover {
+
+    background: #219150;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   MESSAGE / ERROR
+   ===================================================== */
+
+.message-container {
+
+    width: 450px;
+
+    max-width: 90%;
+
+    margin: 100px auto;
+
+    padding: 50px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.8);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.12);
+
+    animation: formAppear 0.8s ease;
+}
+
+.message-container p {
+
+    color: #666;
+
+    margin: 20px 0;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    position: relative;
+}
+
+.hero-content {
+
+    max-width: 750px;
+
+    animation: heroAppear 1s ease;
+}
+
+@keyframes heroAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+.hero h1 {
+
+    font-size: 65px;
+
+    line-height: 1.1;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+
+    color: #ff4d2d;
+}
+
+.hero p {
+
+    font-size: 18px;
+
+    color: #666;
+
+    margin-bottom: 35px;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    margin-top: 80px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #222;
+
+    color: white;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        width: 95%;
+
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .nav-links {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero h1 {
+
+        font-size: 42px;
+    }
+
+    .form-container {
+
+        padding: 30px 22px;
+
+        margin-top: 50px;
+    }
+
+    .dashboard-card {
+
+        padding: 30px 20px;
+    }
+
+    .restaurant-table {
+
+        font-size: 11px;
+    }
+
+    .restaurant-table th,
+    .restaurant-table td {
+
+        padding: 8px;
+    }
+
+    .restaurant-table img {
+
+        width: 70px;
+
+        height: 55px;
+    }
+
+}
+/* ========================================
+   WELCOME PAGE
+======================================== */
+
+.welcome-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at 10% 20%, #ffd6cc, transparent 30%),
+        radial-gradient(circle at 90% 80%, #ffe0a8, transparent 30%),
+        linear-gradient(135deg, #fff7f3, #ffffff);
+
+    overflow: hidden;
+}
+
+
+/* Decorative background */
+
+.welcome-page::before {
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 81, 47, 0.08);
+
+    top: -120px;
+    right: -100px;
+
+    animation: floatCircle 6s ease-in-out infinite;
+}
+
+.welcome-page::after {
+    content: "";
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background: rgba(240, 152, 25, 0.08);
+
+    bottom: -120px;
+    left: -100px;
+
+    animation: floatCircle 7s ease-in-out infinite reverse;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.welcome-card {
+
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 550px;
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        0 10px 30px rgba(255, 81, 47, 0.08);
+
+    animation: cardAppear 0.8s ease;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.welcome-logo {
+
+    width: 85px;
+    height: 85px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 42px;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #f09819
+    );
+
+    box-shadow:
+        0 15px 35px rgba(255, 81, 47, 0.30);
+
+    animation: floating 3s ease-in-out infinite;
+}
+
+
+/* ========================================
+   HEADING
+======================================== */
+
+.welcome-card h1 {
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    color: #222;
+
+    margin-bottom: 15px;
+
+    letter-spacing: -1px;
+}
+
+.welcome-card h1 span {
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #f09819
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.welcome-text {
+
+    color: #777;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    max-width: 400px;
+
+    margin: 0 auto 35px;
+}
+
+
+/* ========================================
+   BUTTON CONTAINER
+======================================== */
+
+.welcome-buttons {
+
+    display: flex;
+
+    gap: 15px;
+
+    justify-content: center;
+}
+
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.btn {
+
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 180px;
+
+    padding: 15px 25px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    transition: all 0.3s ease;
+}
+
+
+/* SIGN IN */
+
+.btn-primary {
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #f09819
+    );
+
+    box-shadow:
+        0 10px 25px rgba(255, 81, 47, 0.25);
+}
+
+
+/* SIGN UP */
+
+.btn-secondary {
+
+    color: #ff512f;
+
+    background: white;
+
+    border: 2px solid #ffddd4;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.btn:hover {
+
+    transform: translateY(-4px);
+}
+
+
+.btn-primary:hover {
+
+    box-shadow:
+        0 15px 35px rgba(255, 81, 47, 0.35);
+}
+
+
+.btn-secondary:hover {
+
+    border-color: #ff512f;
+
+    background: #fff7f3;
+
+    box-shadow:
+        0 10px 25px rgba(255, 81, 47, 0.10);
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes floatCircle {
+
+    0% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -20px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .welcome-card {
+
+        padding: 40px 25px;
+
+    }
+
+    .welcome-card h1 {
+
+        font-size: 32px;
+
+    }
+
+    .welcome-buttons {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+    .btn {
+
+        width: 100%;
+
+    }
+}
+/* ========================================
+   SIGN IN / AUTH PAGES
+======================================== */
+
+.auth-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(circle at 10% 10%, #ffd6cc, transparent 35%),
+        radial-gradient(circle at 90% 90%, #ffe5b5, transparent 35%),
+        linear-gradient(135deg, #fff6f2, #ffffff);
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   AUTH CARD
+======================================== */
+
+.auth-card {
+
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 45px 40px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.12),
+        0 10px 30px rgba(255, 81, 47, 0.08);
+
+    animation: authCardAppear 0.7s ease;
+}
+
+
+/* ========================================
+   LOGO
+======================================== */
+
+.auth-logo {
+
+    width: 75px;
+    height: 75px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 34px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #f09819
+    );
+
+    box-shadow:
+        0 12px 30px rgba(255, 81, 47, 0.28);
+
+    animation: authFloat 3s ease-in-out infinite;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.auth-card h1 {
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    color: #222;
+
+    margin-bottom: 8px;
+}
+
+
+.auth-subtitle {
+
+    color: #888;
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ========================================
+   INPUT GROUP
+======================================== */
+
+.input-group {
+
+    text-align: left;
+
+    margin-bottom: 20px;
+}
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #333;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: #fafafa;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+
+.input-group input:hover {
+
+    border-color: #ff9a76;
+}
+
+
+.input-group input:focus {
+
+    background: white;
+
+    border-color: #ff512f;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 81, 47, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   SIGN IN BUTTON
+======================================== */
+
+.auth-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #f09819
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(255, 81, 47, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+
+.auth-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(255, 81, 47, 0.35);
+}
+
+
+.auth-btn:active {
+
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.auth-footer {
+
+    margin-top: 25px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.auth-footer a {
+
+    color: #ff512f;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.auth-footer a:hover {
+
+    color: #f09819;
+}
+
+
+/* ========================================
+   BACK LINK
+======================================== */
+
+.back-link {
+
+    display: block;
+
+    margin-top: 18px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.back-link:hover {
+
+    color: #ff512f;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes authCardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes authFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .auth-page {
+        padding: 20px;
+    }
+
+    .auth-card {
+        padding: 35px 25px;
+    }
+
+    .auth-card h1 {
+        font-size: 27px;
+    }
+}
+/* ========================================
+   SIGN UP PAGE
+======================================== */
+
+.signup-card {
+
+    max-width: 480px;
+
+    padding: 40px 42px;
+}
+
+
+/* Address textarea */
+
+.input-group textarea {
+
+    width: 100%;
+
+    min-height: 90px;
+
+    padding: 14px 16px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: #fafafa;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    resize: vertical;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+}
+
+
+.input-group textarea:hover {
+
+    border-color: #ff9a76;
+}
+
+
+.input-group textarea:focus {
+
+    background: white;
+
+    border-color: #ff512f;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 81, 47, 0.10);
+}
+
+
+/* Placeholder */
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+
+    color: #aaa;
+}
+
+
+/* Signup animation */
+
+.signup-card {
+
+    animation: signupAppear 0.7s ease;
+}
+
+
+@keyframes signupAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .signup-card {
+
+        padding: 30px 22px;
+    }
+
+}
+/* ========================================
+   ADMIN DASHBOARD
+======================================== */
+
+.admin-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #ffd6cc,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            #ffe5b5,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff7f3,
+            #ffffff
+        );
+}
+
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.admin-container {
+
+    width: 100%;
+
+    max-width: 950px;
+
+    padding: 45px;
+
+    background: rgba(255, 255, 255, 0.82);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.12);
+
+    animation: adminAppear 0.7s ease;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.admin-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    margin-bottom: 45px;
+
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+.admin-logo {
+
+    width: 75px;
+
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 35px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff512f,
+            #f09819
+        );
+
+    box-shadow:
+        0 12px 30px rgba(
+            255,
+            81,
+            47,
+            0.25
+        );
+
+    animation: adminFloat 3s ease-in-out infinite;
+}
+
+
+.admin-header h1 {
+
+    margin: 0 0 7px;
+
+    font-size: 32px;
+
+    color: #222;
+
+    font-weight: 800;
+}
+
+
+.admin-header p {
+
+    margin: 0;
+
+    color: #888;
+
+    font-size: 15px;
+}
+
+
+/* ========================================
+   DASHBOARD
+======================================== */
+
+.admin-dashboard h2 {
+
+    margin-bottom: 8px;
+
+    font-size: 24px;
+
+    color: #222;
+}
+
+
+.dashboard-description {
+
+    color: #888;
+
+    margin-bottom: 28px;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   ACTION CARDS
+======================================== */
+
+.admin-actions {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+.admin-card {
+
+    position: relative;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #eee;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.05
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.admin-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #ffb09a;
+
+    box-shadow:
+        0 20px 40px rgba(
+            0,
+            0,
+            0,
+            0.10
+        );
+}
+
+
+/* CARD ICON */
+
+.admin-card-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    font-size: 25px;
+
+    border-radius: 16px;
+
+    background: #fff1eb;
+}
+
+
+.admin-card h3 {
+
+    margin-bottom: 10px;
+
+    color: #222;
+
+    font-size: 19px;
+}
+
+
+.admin-card p {
+
+    color: #888;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+.admin-card span {
+
+    color: #ff512f;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.admin-footer {
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #eee;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes adminAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes adminFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .admin-page {
+
+        padding: 20px;
+    }
+
+
+    .admin-container {
+
+        padding: 30px 22px;
+    }
+
+
+    .admin-header {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        margin-bottom: 30px;
+    }
+
+
+    .admin-header h1 {
+
+        font-size: 26px;
+    }
+
+
+    .admin-actions {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+/* ========================================
+   CUSTOMER PAGE
+======================================== */
+
+.customer-page {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            #ffd6cc,
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 95% 95%,
+            #ffe5b5,
+            transparent 25%
+        ),
+
+        #fffaf7;
+
+    padding: 25px;
+
+}
+
+
+/* ========================================
+   CUSTOMER CONTAINER
+======================================== */
+
+.customer-container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.customer-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 5px;
+
+    margin-bottom: 25px;
+}
+
+
+.customer-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    color: #222;
+}
+
+
+.customer-brand:first-letter {
+
+    font-size: 30px;
+}
+
+
+.logout-btn {
+
+    text-decoration: none;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    color: #ff512f;
+
+    background: white;
+
+    border: 1px solid #ffd5ca;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+
+.logout-btn:hover {
+
+    color: white;
+
+    background: #ff512f;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.customer-hero {
+
+    min-height: 280px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 45px 55px;
+
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff512f,
+            #f09819
+        );
+
+    box-shadow:
+        0 25px 50px rgba(
+            255,
+            81,
+            47,
+            0.20
+        );
+
+    animation: customerHeroAppear 0.8s ease;
+}
+
+
+.hero-content {
+
+    max-width: 600px;
+
+    color: white;
+}
+
+
+.hero-small-text {
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    opacity: 0.85;
+}
+
+
+.hero-content h1 {
+
+    font-size: 44px;
+
+    line-height: 1.15;
+
+    margin: 12px 0;
+
+    font-weight: 800;
+}
+
+
+.hero-content h1 span {
+
+    display: block;
+
+    color: #fff4d8;
+}
+
+
+.hero-content p {
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    opacity: 0.9;
+}
+
+
+.hero-food {
+
+    width: 150px;
+
+    height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.15
+    );
+
+    font-size: 80px;
+
+    animation: foodFloat 3s ease-in-out infinite;
+}
+
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.customer-section {
+
+    margin-top: 40px;
+}
+
+
+.customer-section h2 {
+
+    font-size: 24px;
+
+    color: #222;
+
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   CATEGORIES
+======================================== */
+
+.category-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+
+.category-card {
+
+    padding: 25px 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #eee;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.04
+        );
+
+    font-size: 35px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.category-card span {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #333;
+}
+
+
+.category-card:hover {
+
+    transform: translateY(-7px);
+
+    border-color: #ffb19d;
+
+    box-shadow:
+        0 15px 35px rgba(
+            0,
+            0,
+            0,
+            0.09
+        );
+}
+
+
+/* ========================================
+   CUSTOMER ACTIONS
+======================================== */
+
+.customer-actions {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.customer-action-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #eee;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+.customer-action-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+
+    border-color: #ffb19d;
+}
+
+
+.action-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-shrink: 0;
+
+    border-radius: 16px;
+
+    background: #fff0eb;
+
+    font-size: 28px;
+}
+
+
+.customer-action-card h3 {
+
+    color: #222;
+
+    margin-bottom: 5px;
+
+    font-size: 17px;
+}
+
+
+.customer-action-card p {
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+
+.arrow {
+
+    margin-left: auto;
+
+    color: #ff512f;
+
+    font-size: 24px;
+
+    transition: 0.3s;
+}
+
+
+.customer-action-card:hover .arrow {
+
+    transform: translateX(5px);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.customer-footer {
+
+    text-align: center;
+
+    margin-top: 50px;
+
+    padding: 25px;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes customerHeroAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes foodFloat {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .customer-page {
+
+        padding: 15px;
+    }
+
+
+    .customer-hero {
+
+        padding: 35px 25px;
+
+        text-align: center;
+
+        justify-content: center;
+    }
+
+
+    .hero-content h1 {
+
+        font-size: 34px;
+    }
+
+
+    .hero-food {
+
+        display: none;
+    }
+
+
+    .category-container {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .customer-actions {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+/* ========================================
+   ADD RESTAURANT
+======================================== */
+
+.restaurant-form-card {
+
+    max-width: 500px;
+
+    padding: 42px;
+}
+
+
+/* Slightly more space between fields */
+
+.restaurant-form-card .input-group {
+
+    margin-bottom: 19px;
+}
+
+
+/* Rating input */
+
+.restaurant-form-card input[type="number"] {
+
+    appearance: textfield;
+}
+
+
+/* Button */
+
+.restaurant-form-card .auth-btn {
+
+    margin-top: 5px;
+}
+
+
+/* ========================================
+   RESTAURANT CARD ANIMATION
+======================================== */
+
+.restaurant-form-card {
+
+    animation: restaurantAppear 0.7s ease;
+}
+
+
+@keyframes restaurantAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(40px)
+            scale(0.96);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+/* ========================================
+   SHOW RESTAURANTS PAGE
+======================================== */
+
+.restaurants-page {
+
+    min-height: 100vh;
+
+    padding: 40px;
+
+    background:
+        radial-gradient(
+            circle at 5% 5%,
+            #ffd6cc,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 95% 95%,
+            #ffe5b5,
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff7f3,
+            #ffffff
+        );
+}
+
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.restaurants-container {
+
+    width: 100%;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    animation: restaurantsAppear 0.7s ease;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.restaurants-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+    padding: 30px 35px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.85
+    );
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 24px;
+
+    border: 1px solid white;
+
+    box-shadow:
+        0 15px 40px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+}
+
+
+.section-label {
+
+    color: #ff512f;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.restaurants-header h1 {
+
+    margin: 7px 0;
+
+    font-size: 30px;
+
+    color: #222;
+
+    font-weight: 800;
+}
+
+
+.restaurants-header p {
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   ADD RESTAURANT BUTTON
+======================================== */
+
+.add-restaurant-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff512f,
+            #f09819
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 10px 25px rgba(
+            255,
+            81,
+            47,
+            0.20
+        );
+
+    transition: 0.3s;
+}
+
+
+.add-restaurant-btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(
+            255,
+            81,
+            47,
+            0.30
+        );
+}
+
+
+/* ========================================
+   TABLE WRAPPER
+======================================== */
+
+.restaurant-table-wrapper {
+
+    overflow-x: auto;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.90
+    );
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 50px rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+
+    border: 1px solid #eee;
+
+    animation: tableAppear 0.8s ease;
+}
+
+
+/* ========================================
+   TABLE
+======================================== */
+
+.restaurant-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 850px;
+}
+
+
+/* TABLE HEADER */
+
+.restaurant-table thead {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff4ef,
+            #fff9f5
+        );
+}
+
+
+.restaurant-table th {
+
+    padding: 20px;
+
+    text-align: left;
+
+    color: #555;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    border-bottom: 1px solid #eee;
+}
+
+
+/* TABLE ROW */
+
+.restaurant-table tbody tr {
+
+    transition: 0.3s;
+}
+
+
+.restaurant-table tbody tr:hover {
+
+    background: #fffaf7;
+
+    transform: scale(1.005);
+}
+
+
+.restaurant-table td {
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #f1f1f1;
+
+    vertical-align: middle;
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   RESTAURANT IMAGE
+======================================== */
+
+.restaurant-image {
+
+    width: 75px;
+
+    height: 65px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+
+    box-shadow:
+        0 5px 15px rgba(
+            0,
+            0,
+            0,
+            0.10
+        );
+
+    transition: 0.3s;
+}
+
+
+.restaurant-image:hover {
+
+    transform: scale(1.08);
+}
+
+
+/* NO IMAGE */
+
+.no-image {
+
+    width: 75px;
+
+    height: 65px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 12px;
+
+    background: #fff0eb;
+
+    font-size: 28px;
+}
+
+
+/* ========================================
+   RESTAURANT NAME
+======================================== */
+
+.restaurant-name {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #222;
+}
+
+
+/* ========================================
+   CUISINE
+======================================== */
+
+.cuisine-badge {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: #fff1eb;
+
+    color: #e84b2f;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   RATING
+======================================== */
+
+.rating {
+
+    font-weight: 700;
+
+    color: #444;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   ACTION BUTTONS
+======================================== */
+
+.restaurant-actions {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+.action-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 8px 11px;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+
+/* UPDATE */
+
+.update-btn {
+
+    color: #1769aa;
+
+    background: #eaf5ff;
+}
+
+
+.update-btn:hover {
+
+    background: #1769aa;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* DELETE */
+
+.delete-btn {
+
+    color: #d93025;
+
+    background: #fff0ef;
+}
+
+
+.delete-btn:hover {
+
+    background: #d93025;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* MENU */
+
+.menu-btn {
+
+    color: #a05a00;
+
+    background: #fff6df;
+}
+
+
+.menu-btn:hover {
+
+    background: #f09819;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   EMPTY STATE
+======================================== */
+
+.empty-restaurants {
+
+    margin-top: 25px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px rgba(
+            0,
+            0,
+            0,
+            0.07
+        );
+}
+
+
+.empty-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+}
+
+
+.empty-restaurants h2 {
+
+    color: #222;
+
+    margin-bottom: 8px;
+}
+
+
+.empty-restaurants p {
+
+    color: #888;
+
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   BACK
+======================================== */
+
+.restaurants-back {
+
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes restaurantsAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes tableAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .restaurants-page {
+
+        padding: 20px 15px;
+    }
+
+
+    .restaurants-header {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 25px 20px;
+    }
+
+
+    .restaurants-header h1 {
+
+        font-size: 25px;
+    }
+
+
+    .add-restaurant-btn {
+
+        width: 100%;
+    }
+
+}
+/* ========================================
+   LOGIN FAILED PAGE
+======================================== */
+
+.error-card {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    padding: 45px 40px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.90
+    );
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.9
+    );
+
+    box-shadow:
+        0 25px 70px rgba(
+            0,
+            0,
+            0,
+            0.12
+        );
+
+    animation: errorAppear 0.6s ease;
+}
+
+
+/* ========================================
+   ERROR ICON
+======================================== */
+
+.error-icon {
+
+    width: 80px;
+
+    height: 80px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff1ed;
+
+    font-size: 38px;
+
+    box-shadow:
+        0 10px 25px rgba(
+            255,
+            81,
+            47,
+            0.10
+        );
+
+    animation: errorPulse 2s ease-in-out infinite;
+}
+
+
+/* ========================================
+   ERROR TITLE
+======================================== */
+
+.error-card h1 {
+
+    margin: 0 0 12px;
+
+    font-size: 30px;
+
+    color: #222;
+
+    font-weight: 800;
+}
+
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+.error-message {
+
+    margin: 0 0 28px;
+
+    color: #888;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   TRY AGAIN BUTTON
+======================================== */
+
+.error-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    text-decoration: none;
+
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes errorAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes errorPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+    }
+
+    50% {
+
+        transform: scale(1.06);
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 500px) {
+
+    .error-card {
+
+        padding: 35px 25px;
+    }
+
+}
