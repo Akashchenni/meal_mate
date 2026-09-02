@@ -51,7 +51,8 @@ def signin(request):
             restaurants = Restaurent.objects.all()
 
             return render(request, 'customer_home.html', {
-                    'restaurants': restaurants})
+                    'restaurants': restaurants,
+                    'username': username})
             
     except Customer.DoesNotExist:
             return render(request,'fail.html')      
@@ -135,7 +136,7 @@ def update_menu(request,id):
           return render(request,'admin_home.html')
 
 
-def view_menu(request,id):
+def view_menu(request,id,username):
      restaurant = Restaurent.objects.get(id=id)
      itemlist = Item.objects.all()
-     return render(request,'customer_menu.html',{'restaurant':restaurant,'itemlist':itemlist})
+     return render(request,'customer_menu.html',{'restaurant':restaurant,'itemlist':itemlist,'username':username})
