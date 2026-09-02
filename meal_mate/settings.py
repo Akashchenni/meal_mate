@@ -122,3 +122,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+RAZORPAY_KEY_ID = 'rzp_test_TXEVZhRVXunLpe'
+RAZORPAY_KEY_SECRET = 'i2GMPapk9RrxynXpQFv7OB8d'

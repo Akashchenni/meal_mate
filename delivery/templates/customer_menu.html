@@ -7,6 +7,7 @@
 </head>
 <body>
     <h3>Wellcome {{username}}</h3>
+    <a href="{% url 'show_cart' username%}">GO To Cart</a>
      <!-- display menu items -->
      <h1>Menu for {{restaurant.name}}</h1>
      <h3>Cuisine: {{restaurant.cuisine}}</h3>
@@ -39,7 +40,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="#">Add To Cart</a>
+                    <a href="{% url 'add_to_cart' item.id username%}">Add To Cart</a>
                 </td>
             </tr>
             {% empty %}

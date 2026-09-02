@@ -15,6 +15,10 @@ urlpatterns = [
     path('delete_restaurant/<int:id>',views.delete_restaurant,name='delete_restaurant'),
     path('open_update_menu/<int:id>/',views.open_update_menu,name="open_update_menu"),
     path('update_menu/<int:id>/',views.update_menu,name='update_menu'),
-    path('view_menu/<int:id>/<str:username>/',views.view_menu,name="view_menu")
+    path('view_menu/<int:id>/<str:username>/',views.view_menu,name="view_menu"),
+    path('add_to_cart/<int:id>/<str:username>/',views.add_to_cart,name='add_to_cart'),
+    path('show_cart/<str:username>/',views.show_cart,name='show_cart'),
+    path('checkout/<str:username>/',views.checkout,name='checkout'),
+    path('orders/<str:username>/',views.orders,name='orders')
 ]
 # 12 the line == open_show_restaurant

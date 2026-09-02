@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+</head>
+<body>
+
+    <h1>Checkout</h1>
+
+    {% if error %}
+        <h2>{{ error }}</h2>
+    {% else %}
+
+        <h3>Welcome {{ username }}</h3>
+
+        <h2>Total Price: ₹{{ total_price }}</h2>
+
+        <button id="rzp-button1">Pay Now</button>
+
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+        <script>
+            var options = {
+                "key": "{{ razorpay_key_id }}",
+                "amount": "{{ amount }}",
+                "currency": "INR",
+                "name": "Meal Mate",
+                "description": "Meal Mate Order",
+                "order_id": "{{ order_id }}",
+
+                "handler": function (response) {
+    alert("Payment Successful!");
+
+    window.location.href = "{% url 'orders' username %}";
+},
+
+                "prefill": {
+                    "name": "{{ username }}"
+                },
+
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+
+            document.getElementById('rzp-button1').onclick = function(e) {
+                rzp1.open();
+                e.preventDefault();
+            }
+        </script>
+
+    {% endif %}
+
+</body>
+</html>

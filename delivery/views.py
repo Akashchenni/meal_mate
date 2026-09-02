@@ -1,7 +1,9 @@
 from django.shortcuts import render , get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Customer
-from .models import Restaurent,Item
+from .models import Restaurent,Item, Cart
+from django.conf import settings
+import razorpay
 
 # Create your views here.
 def index(request):
@@ -140,3 +142,67 @@ def view_menu(request,id,username):
      restaurant = Restaurent.objects.get(id=id)
      itemlist = Item.objects.all()
      return render(request,'customer_menu.html',{'restaurant':restaurant,'itemlist':itemlist,'username':username})
+
+def add_to_cart(request,id,username):
+     item = Item.objects.get(id=id)
+     customer = Customer.objects.get(username=username)
+
+     cart, created = Cart.objects.get_or_create(customer=customer)
+
+     cart.items.add(item)
+
+     return HttpResponse('addded to cart')
+
+def show_cart(request,username):
+     customer = Customer.objects.get(username=username)
+     cart = Cart.objects.filter(customer=customer).first()
+     items = cart.items.all() if cart else []
+     total_price = cart.total_price() if cart else 0
+
+     return render(request,'cart.html',{'itemlist':items,'total_price':total_price,'username':username})
+
+def checkout(request,username):
+     customer = get_object_or_404(Customer,username=username)
+     cart = Cart.objects.filter(customer=customer).first()
+     items = cart.items.all() if cart else []
+     total_price = cart.total_price() if cart else 0
+
+     if total_price == 0:
+          return render(request,'checkout.html',{'error':'your cart is empty!!!'})
+
+    #  inintialize azorpay client
+     client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID,settings.RAZORPAY_KEY_SECRET))
+
+     order_data = {
+          'amount':int(total_price*100),
+          'currency':'INR',
+          'payment_capture':'1'
+     }
+     order = client.order.create(data=order_data)
+
+     return render(request, 'checkout.html', {
+        'username': username,
+        'cart_items': items,
+        'total_price': total_price,
+        'razorpay_key_id': settings.RAZORPAY_KEY_ID,
+        'order_id': order['id'], # Razorpay order ID
+        'amount': total_price,
+    })
+
+def orders(request,username):
+     customer = get_object_or_404(Customer,username=username)
+     cart = Cart.objects.filter(customer=customer).first()
+     cart_items = cart.items.all() if cart else []
+     total_price = cart.total_price() if cart else 0
+
+     if cart:
+          cart.items.clear()
+
+     return render(request, 'orders.html', {
+             'username': username,
+             'customer':customer,
+             'cart_items': cart_items,
+             'total_price': total_price,
+         })
+
+
